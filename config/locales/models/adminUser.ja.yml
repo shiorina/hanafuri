@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      admin_user: 管理者
+    attributes:
+      admin_user:
+        name: 氏名
+        email: メールアドレス
+        password: パスワード
