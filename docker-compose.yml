@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  db:
+    platform: linux/x86_64
+    image: mysql:8.0.21
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: vite-rails
+      MYSQL_DATABASE: vite-rails_development
+      MYSQL_USER: vite-rails
+      MYSQL_PASSWORD: vite-rails
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - mysql_vol:/var/lib/mysql
+  app:
+    platform: linux/x86_64
+    build: .
+    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - bundle_install:/bundle
+      - .:/app
+      - gem_vol:/usr/local/bundle
+      - node-modules:/var/www/web/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  mysql_vol:
+  gem_vol:
+  bundle_install:
+  node-modules:
