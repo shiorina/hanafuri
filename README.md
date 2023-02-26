@@ -11,3 +11,10 @@ v19.3.0
 
 ## yarn
 1.22.15
+
+# Up
+
+```
+docker-compose up --build
+```
+
