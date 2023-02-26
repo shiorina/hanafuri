@@ -7,10 +7,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: vite-rails
-      MYSQL_DATABASE: vite-rails_development
-      MYSQL_USER: vite-rails
-      MYSQL_PASSWORD: vite-rails
+      MYSQL_ROOT_PASSWORD: hanafuri
+      MYSQL_DATABASE: hanafuri_development
+      MYSQL_USER: hanafuri
+      MYSQL_PASSWORD: hanafuri
       TZ: 'Asia/Tokyo'
     volumes:
       - mysql_vol:/var/lib/mysql
