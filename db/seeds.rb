@@ -7,8 +7,7 @@ ApplicationRecord.transaction do
   ##########################
   p '=== AdminUser ==='
 
-  admin_user = AdminUser.find_or_initialize_by(email: ENV.fetch('DEMO_USER_EMAIL', 'test@test.com'))
-  p admin_user
+  admin_user = AdminUser.find_or_initialize_by(name: 'テスト管理者', email: ENV.fetch('DEMO_USER_EMAIL', 'test@test.com'))
   admin_user.password = 'password'
   admin_user.skip_confirmation!
   admin_user.save!

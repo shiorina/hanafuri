@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "site#home"
+
+  namespace :admin_pages, path: 'admin' do
+    resources :home, only: %w[index], controller: 'home', path: '/'
+  end
 end
