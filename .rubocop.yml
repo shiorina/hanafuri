@@ -1,0 +1,85 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+Rails:
+  Enabled: true
+AllCops:
+  # Rubyバージョン指定
+  TargetRubyVersion: 3.1
+  # 除外
+  Exclude:
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'db/seeds.rb'
+    - 'test/**/*'
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# クラスのコメント必須を無視
+Style/Documentation:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# 文字リテラルのイミュータブル宣言を無視（freezeになるのはRuby3以降）
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# For rubocop < 1.0.0
+Style/HashEachMethods:
+  Enabled: true
+
+# For rubocop < 1.0.0
+Style/HashTransformKeys:
+  Enabled: true
+
+# For rubocop < 1.0.0
+Style/HashTransformValues:
+  Enabled: true
+
+Layout/ExtraSpacing:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+# scope 等は複数行でも lambda ではなく ->{} で揃えた方が見た目が綺麗
+Style/Lambda:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Layout/LineLength:
+  Max: 160
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'db/seeds.rb'
+    - 'db/seeds/*'
+    - 'config/initializers/*'
+    - 'bin/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Rails/FilePath:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+Rails/RakeEnvironment:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake' 
